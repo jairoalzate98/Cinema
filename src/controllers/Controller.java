@@ -41,17 +41,14 @@ public class Controller implements ActionListener{
 	}
 
 	private void stopSimulation() {
-		// TODO Auto-generated method stub
-		
+		timer.stop();
 	}
 
 	private void initSimulation() {
-		// TODO Auto-generated method stub
-		
+		timer.start();
 	}
 
 	private void generateReport() {
 		// TODO Auto-generated method stub
-		
 	}
 }
