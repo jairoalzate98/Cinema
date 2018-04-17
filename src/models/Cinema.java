@@ -5,21 +5,31 @@ import java.util.ArrayList;
 public class Cinema {
  
 	private ArrayList<Room> roomList;
-	private Category head;
+	private Client clientHead;
+	private Category categoryHead;
 	
 	public Cinema() {
 		roomList = new ArrayList<>();
 	}
 	
+	public void addClient(Client client){
+		if (clientHead != null) {
+			client.setNextClient(clientHead);
+			clientHead = client;
+		}else{
+			clientHead = client;
+		}
+	}
+	
 	public void addHead(Category category){
-		if (head != null) {
-			Category actual = head;
+		if (categoryHead != null) {
+			Category actual = categoryHead;
 			while (actual.getNextCategory() != null) {
 				actual = actual.getNextCategory();
 			}
 			actual.setNextCategory(category);
 		}else{
-			head = category;
+			categoryHead = category;
 		}
 	}
 	
@@ -36,6 +46,6 @@ public class Cinema {
 	}
 
 	public Category getHead() {
-		return head;
+		return categoryHead;
 	}
 }
