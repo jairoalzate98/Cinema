@@ -7,11 +7,33 @@ public class Cinema {
 	private ArrayList<Room> roomList;
 	private Client clientHead;
 	private Category categoryHead;
+	private ArrayList<MovieView> movieViewList;
 	
 	public Cinema() {
 		roomList = new ArrayList<>();
+		movieViewList = new ArrayList<>();
 	}
 	
+	public static MovieView creteMovieWiew(int idClient, int idMovie){
+		return new MovieView(idClient, idMovie);
+	}
+	
+	public void addMovieView(MovieView movieView){
+		movieViewList.add(movieView);
+	}
+	
+	public Client getClientHead() {
+		return clientHead;
+	}
+
+	public Category getCategoryHead() {
+		return categoryHead;
+	}
+
+	public ArrayList<MovieView> getMovieViewList() {
+		return movieViewList;
+	}
+
 	public void addClient(Client client){
 		if (clientHead != null) {
 			client.setNextClient(clientHead);
