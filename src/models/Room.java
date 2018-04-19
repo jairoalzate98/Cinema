@@ -1,6 +1,6 @@
 package models;
 
-public class Room {
+public class Room extends Node {
 
 	private int idRoom;
 	private static int count;

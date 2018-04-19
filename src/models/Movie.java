@@ -1,6 +1,6 @@
 package models;
 
-public class Movie {
+public class Movie extends Node {
 
 	private int id;
 	private static int count;
