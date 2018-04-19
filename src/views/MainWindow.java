@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
@@ -11,6 +12,7 @@ public class MainWindow extends JFrame{
 
 	public static final String TITLE_TEXT = "Cinema Simulation";
 	private static final long serialVersionUID = 1L;
+	private JPanelCinemaWelcome jPanelCinemaWelcome;
 
 	public MainWindow(Controller controller) {
 		setTitle(TITLE_TEXT);
@@ -20,6 +22,8 @@ public class MainWindow extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 		setJMenuBar(new JMBMainWindow(controller));
+		jPanelCinemaWelcome = new JPanelCinemaWelcome();
+		add(jPanelCinemaWelcome, BorderLayout.CENTER);
 		setVisible(true);
 	}
 }
