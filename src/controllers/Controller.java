@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import models.Cinema;
@@ -45,6 +46,8 @@ public class Controller implements ActionListener{
 	}
 
 	private void initSimulation() {
+		String number = JOptionPane.showInputDialog(mainWindow, "ingrese el numero de salas");
+		mainWindow.initsimulation(Integer.parseInt(number));
 		timer.start();
 	}
 

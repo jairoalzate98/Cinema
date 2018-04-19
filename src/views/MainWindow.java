@@ -13,6 +13,7 @@ public class MainWindow extends JFrame{
 	public static final String TITLE_TEXT = "Cinema Simulation";
 	private static final long serialVersionUID = 1L;
 	private JPanelCinemaWelcome jPanelCinemaWelcome;
+	private JPanelInitSimulation jPanelInitSimulation;
 
 	public MainWindow(Controller controller) {
 		setTitle(TITLE_TEXT);
@@ -25,5 +26,14 @@ public class MainWindow extends JFrame{
 		jPanelCinemaWelcome = new JPanelCinemaWelcome();
 		add(jPanelCinemaWelcome, BorderLayout.CENTER);
 		setVisible(true);
+	}
+	
+	public void initsimulation(int roomNumber){
+		System.out.println("Hola");
+		remove(jPanelCinemaWelcome);
+		jPanelInitSimulation = new JPanelInitSimulation(roomNumber);
+		add(jPanelInitSimulation, BorderLayout.CENTER);
+		revalidate();
+		repaint();
 	}
 }
