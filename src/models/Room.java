@@ -6,6 +6,7 @@ public class Room {
 	private static int count;
 	private String name;
 	private int capacity;
+	private Room nextRoom;
 	
 	public Room(String name, int capacity) {
 		this.idRoom = ++count;
@@ -19,6 +20,14 @@ public class Room {
 
 	public String getName() {
 		return name;
+	}
+
+	public Room getNextRoom() {
+		return nextRoom;
+	}
+
+	public void setNextRoom(Room nextRoom) {
+		this.nextRoom = nextRoom;
 	}
 
 	public int getCapacity() {
