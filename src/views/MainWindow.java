@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import controllers.Controller;
+import models.Client;
 
 public class MainWindow extends JFrame{
 
@@ -29,11 +30,23 @@ public class MainWindow extends JFrame{
 	}
 	
 	public void initsimulation(int roomNumber){
-		System.out.println("Hola");
 		remove(jPanelCinemaWelcome);
 		jPanelInitSimulation = new JPanelInitSimulation(roomNumber);
 		add(jPanelInitSimulation, BorderLayout.CENTER);
 		revalidate();
 		repaint();
+	}
+	
+	public int getWidhtPanel(){
+		return jPanelInitSimulation.getWidth();
+	}
+	
+	public int getHeightPanel(){
+		return jPanelInitSimulation.getHeight();
+	}
+	
+	public void addCliente(Client client){
+		jPanelInitSimulation.setClient(client);
+		jPanelInitSimulation.repaint();
 	}
 }
