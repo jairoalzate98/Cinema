@@ -20,7 +20,7 @@ public class Controller implements ActionListener{
 	public Controller() {
 		cinema = new Cinema();
 		mainWindow = new MainWindow(this);
-		timer = new Timer(500, new ActionListener() {
+		timer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cinema.getClientHead().setPosX();

@@ -21,6 +21,10 @@ public class JPanelInitSimulation extends JPanel {
 		this.client = client;
 	}
 	
+	public void initComponents(){
+		
+	}
+	
 	@Override
 	public void paint(Graphics g) {
 		int positionX = 0;
@@ -29,6 +33,7 @@ public class JPanelInitSimulation extends JPanel {
 			g.drawImage(new ImageIcon(getClass().getResource("/img/taquilla.jpg")).getImage(), positionX + ((getWidth() / roomNumber) / 2) - 100, getHeight() / 3, 200, 100, this);
 			positionX += (getWidth() / roomNumber);
 		}
+		removeAll();
 		g.drawImage(new ImageIcon(getClass().getResource("/img/persona.jpg")).getImage(), client.getPosX(), client.getPosY(), 80, 80, this);
 	}
 }

@@ -47,6 +47,6 @@ public class MainWindow extends JFrame{
 	
 	public void addCliente(Client client){
 		jPanelInitSimulation.setClient(client);
-		jPanelInitSimulation.repaint();
+		repaint();
 	}
 }
