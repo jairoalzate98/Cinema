@@ -16,6 +16,7 @@ public class Controller implements ActionListener{
 	private MainWindow mainWindow;
 	private Timer timer;
 	private int time;
+	private int numberClient;
 
 	public Controller() {
 		cinema = new Cinema();
@@ -23,9 +24,12 @@ public class Controller implements ActionListener{
 		timer = new Timer(5, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (time == 100) {
-					cinema.addClient(new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel()));
-					time = 0;
+				if (numberClient > 0) {
+					if (time == 100) {
+						cinema.addClient(new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel()));
+						time = 0;
+						numberClient--;
+					}
 				}
 				time++;
 				cinema.verifyMove();
@@ -56,10 +60,12 @@ public class Controller implements ActionListener{
 
 	private void initSimulation() {
 		String number = JOptionPane.showInputDialog(mainWindow, "ingrese el numero de salas");
+		numberClient =Integer.parseInt(JOptionPane.showInputDialog(mainWindow, "ingrese el numero de clientes"));
 		mainWindow.initsimulation(Integer.parseInt(number));
 		cinema.setRoomList(mainWindow.getRooms());
 		Client c = new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel());
 		cinema.addClient(c);
+		numberClient--;
 		mainWindow.addCliente(cinema.convertToArrayList());
 		timer.start();
 	}

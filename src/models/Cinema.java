@@ -3,12 +3,11 @@ package models;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Cinema {
+public class Cinema extends Node{
  
 	private ArrayList<Room> roomList;
 	private Client clientList;
 	private ArrayList<Client> clientListToSend;
-	private Movie movieHead;
 	private ArrayList<MovieView> movieViewList;
 	
 	public Cinema() {
@@ -69,10 +68,6 @@ public class Cinema {
 		movieViewList.add(movieView);
 	}
 	
-	public Movie getMovieHead(){
-		return movieHead;
-	}
-	
 	public ArrayList<Room> getRoomList() {
 		return roomList;
 	}
@@ -99,18 +94,6 @@ public class Cinema {
 			actual.setNextClient(client);
 		}else{
 			clientList = client;
-		}
-	}
-	
-	public void addMovie(Movie movie){
-		if (movieHead != null) {
-			Movie actual = movieHead;
-			while(actual.getNextMovie() != null){
-				actual = actual.getNextMovie();
-			}
-			actual.setNextMovie(movie);
-		}else{
-			movieHead = movie;
 		}
 	}
 	

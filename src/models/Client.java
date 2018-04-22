@@ -1,6 +1,6 @@
 package models;
 
-public class Client extends Node{
+public class Client {
 
 	private int id;
 	private static int count;

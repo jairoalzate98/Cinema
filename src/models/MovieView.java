@@ -1,6 +1,6 @@
 package models;
 
-public class MovieView extends Node{
+public class MovieView{
 
 	private int idClient;
 	private int idRoom;
