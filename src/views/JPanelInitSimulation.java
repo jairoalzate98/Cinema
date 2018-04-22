@@ -40,6 +40,8 @@ public class JPanelInitSimulation extends JPanel {
 			g.drawImage(new ImageIcon(getClass().getResource("/img/taquilla.jpg")).getImage(), r.getPosX(), r.getPosY(), 200, 100, this);
 			positionX += (getWidth() / roomNumber);;
 		}
+		g.drawImage(new ImageIcon(getClass().getResource("/img/palomitas.jpg")).getImage(), getWidth() - 550, (getHeight() / 2) + 150, 550, (getHeight() / 2) - 150, this);
+		g.drawImage(new ImageIcon(getClass().getResource("/img/palomitas.jpg")).getImage(), 0, (getHeight() / 2) + 150, 550, (getHeight() / 2) - 150, this);
 		removeAll();
 		for (Client client2 : client) {
 			g.drawImage(new ImageIcon(getClass().getResource("/img/persona.png")).getImage(), client2.getPosX(), client2.getPosY(), 80, 80, this);

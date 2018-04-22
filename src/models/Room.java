@@ -39,6 +39,10 @@ public class Room extends Node {
 	public int getCapacity() {
 		return capacity;
 	}
+	
+	public void setCapacity(){
+		capacity--;
+	}
 
 	@Override
 	public String toString() {

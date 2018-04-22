@@ -36,7 +36,12 @@ public class Cinema {
 				}else if(posX < client.getPosX()){
 					client.setPosX();
 				}else{ 
-					iter.remove();
+					if (roomList.get(client.getNumber()).getCapacity() > 0) {
+						iter.remove();
+						roomList.get(client.getNumber()).setCapacity();
+					}else {
+						client.setNumber((int)(Math.random()*(roomList.size())));
+					}
 				}
 			}
 		}
