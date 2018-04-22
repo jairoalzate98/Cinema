@@ -51,8 +51,9 @@ public class MainWindow extends JFrame{
 		return jPanelInitSimulation.getHeight();
 	}
 	
-	public void addCliente(Client client){
+	public void addCliente(ArrayList<Client> client){
 		jPanelInitSimulation.setClient(client);
+		revalidate();
 		repaint();
 	}
 }

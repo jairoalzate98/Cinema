@@ -15,6 +15,7 @@ public class Controller implements ActionListener{
 	private Cinema cinema;
 	private MainWindow mainWindow;
 	private Timer timer;
+	private int time;
 	
 	public Controller() {
 		cinema = new Cinema();
@@ -22,8 +23,13 @@ public class Controller implements ActionListener{
 		timer = new Timer(25, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (time == 200) {
+					cinema.addClient(new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel()));
+					time = 0;
+				}
+				time++;
 				cinema.verifyMove();
-				mainWindow.addCliente(cinema.getClientHead());
+				mainWindow.addCliente(cinema.getClientListToSend());
 			}
 		});
 	}
@@ -53,7 +59,7 @@ public class Controller implements ActionListener{
 		cinema.setRoomList(mainWindow.getRooms());
 		Client c = new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel());
 		cinema.addClient(c);
-		mainWindow.addCliente(c);
+		mainWindow.addCliente(cinema.getClientHead());
 		timer.start();
 	}
 

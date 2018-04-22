@@ -1,19 +1,20 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Cinema {
  
 	private ArrayList<Room> roomList;
-	private Client clientHead;
+	private ArrayList<Client> clientList;
+	private ArrayList<Client> clientListToSend;
 	private Movie movieHead;
 	private ArrayList<MovieView> movieViewList;
-	private int number;
 	
 	public Cinema() {
 		movieViewList = new ArrayList<>();
 		roomList = new ArrayList<>();
-		number = -1;
+		clientList = new ArrayList<>();
 	}
 	
 	public static MovieView creteMovieWiew(int idClient, int idMovie){
@@ -21,23 +22,41 @@ public class Cinema {
 	}
 	
 	public void verifyMove(){
-		clientHead.setPosY();
-		if (!clientHead.isT()) {
-			if (number == -1) {
-				number = (int)(Math.random()*(roomList.size()));
-				System.out.println(number);
-			}
-			int posX = roomList.get(number).getPosX();
-			if (posX > clientHead.getPosX()) {
-				clientHead.setPosXPlus();
-			}else if(posX < clientHead.getPosX()){
-				clientHead.setPosX();
-			}else{ 
-				return;
+		/*
+		 * Iterator<String> iter = myArrayList.iterator();
+
+while (iter.hasNext()) {
+    String str = iter.next();
+
+    if (someCondition)
+        iter.remove();
+}
+		 * */
+		clientListToSend = new ArrayList<>(clientList);
+		Iterator<Client> iter = clientListToSend.iterator();
+		while(iter.hasNext()){
+			Client client = iter.next();
+			client.setPosY();
+			if (!client.isT()) {
+				if (client.getNumber() == -1) {
+					client.setNumber((int)(Math.random()*(roomList.size())));
+				}
+				int posX = roomList.get(client.getNumber()).getPosX();
+				if (posX > client.getPosX()) {
+					client.setPosXPlus();
+				}else if(posX < client.getPosX()){
+					client.setPosX();
+				}else{ 
+					iter.remove();
+				}
 			}
 		}
 	}
 	
+	public ArrayList<Client> getClientListToSend() {
+		return clientListToSend;
+	}
+
 	public void addMovieView(MovieView movieView){
 		movieViewList.add(movieView);
 	}
@@ -54,8 +73,8 @@ public class Cinema {
 		this.roomList = roomList;
 	}
 
-	public Client getClientHead() {
-		return clientHead;
+	public ArrayList<Client> getClientHead() {
+		return clientList;
 	}
 
 	public ArrayList<MovieView> getMovieViewList() {
@@ -63,12 +82,7 @@ public class Cinema {
 	}
 
 	public void addClient(Client client){
-		if (clientHead != null) {
-			client.setNextClient(clientHead);
-			clientHead = client;
-		}else{
-			clientHead = client;
-		}
+		clientList.add(client);
 	}
 	
 	public void addMovie(Movie movie){

@@ -13,7 +13,7 @@ public class JPanelInitSimulation extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private int roomNumber;
-	private Client client;
+	private ArrayList<Client> client;
 	private ArrayList<Room> rooms;
 
 	public JPanelInitSimulation(int roomNumber) {
@@ -21,7 +21,7 @@ public class JPanelInitSimulation extends JPanel {
 		rooms = new ArrayList<>();
 	}
 	
-	public void setClient(Client client){
+	public void setClient(ArrayList<Client> client){
 		this.client = client;
 	}
 	
@@ -41,6 +41,8 @@ public class JPanelInitSimulation extends JPanel {
 			positionX += (getWidth() / roomNumber);;
 		}
 		removeAll();
-		g.drawImage(new ImageIcon(getClass().getResource("/img/persona.jpg")).getImage(), client.getPosX(), client.getPosY(), 80, 80, this);
+		for (Client client2 : client) {
+			g.drawImage(new ImageIcon(getClass().getResource("/img/persona.jpg")).getImage(), client2.getPosX(), client2.getPosY(), 80, 80, this);
+		}
 	}
 }
