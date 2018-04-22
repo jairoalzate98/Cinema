@@ -7,11 +7,28 @@ public class Client extends Node{
 	private Client nextClient;
 	private int posX;
 	private int posY;
+	private int height;
+	private int width;
+	private boolean t;
 	
 	public Client(int width, int height) {
 		this.posX = (width / 2) - 40;
 		this.posY = height - 100;
+		this.height = height;
+		this.width = width;
 		this.id = ++count;
+	}
+
+	public boolean isT() {
+		return t;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public int getWidth() {
+		return width;
 	}
 
 	public int getPosX() {
@@ -23,11 +40,20 @@ public class Client extends Node{
 	}
 
 	public void setPosX() {
-		this.posX -= 50;
+		this.posX --;
+	}
+
+	public void setPosXPlus() {
+		this.posX ++;
 	}
 
 	public void setPosY() {
-		this.posY -= 50;
+		if (posY > height / 2) {
+			this.posY--;
+			t = true;
+		}else{
+			t = false;
+		}
 	}
 
 	public Client getNextClient() {

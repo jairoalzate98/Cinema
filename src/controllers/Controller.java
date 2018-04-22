@@ -8,7 +8,6 @@ import javax.swing.Timer;
 
 import models.Cinema;
 import models.Client;
-import models.Room;
 import views.MainWindow;
 
 public class Controller implements ActionListener{
@@ -20,10 +19,10 @@ public class Controller implements ActionListener{
 	public Controller() {
 		cinema = new Cinema();
 		mainWindow = new MainWindow(this);
-		timer = new Timer(1000, new ActionListener() {
+		timer = new Timer(25, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cinema.getClientHead().setPosX();
+				cinema.verifyMove();
 				mainWindow.addCliente(cinema.getClientHead());
 			}
 		});
@@ -50,10 +49,8 @@ public class Controller implements ActionListener{
 
 	private void initSimulation() {
 		String number = JOptionPane.showInputDialog(mainWindow, "ingrese el numero de salas");
-		for (int i = 0; i < 4; i++) {
-			cinema.addRoom(new Room());
-		}
 		mainWindow.initsimulation(Integer.parseInt(number));
+		cinema.setRoomList(mainWindow.getRooms());
 		Client c = new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel());
 		cinema.addClient(c);
 		mainWindow.addCliente(c);

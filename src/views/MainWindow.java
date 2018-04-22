@@ -2,12 +2,14 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import controllers.Controller;
 import models.Client;
+import models.Room;
 
 public class MainWindow extends JFrame{
 
@@ -35,6 +37,10 @@ public class MainWindow extends JFrame{
 		add(jPanelInitSimulation, BorderLayout.CENTER);
 		revalidate();
 		repaint();
+	}
+	
+	public ArrayList<Room> getRooms(){
+		return jPanelInitSimulation.getRooms(); 
 	}
 	
 	public int getWidhtPanel(){
