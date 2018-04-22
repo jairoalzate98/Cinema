@@ -11,6 +11,7 @@ public class Client extends Node{
 	private int width;
 	private boolean t;
 	private int number;
+	private int numberFinal;
 	
 	public Client(int width, int height) {
 		this.posX = (width / 2) - 40;
@@ -19,6 +20,15 @@ public class Client extends Node{
 		this.width = width;
 		this.id = ++count;
 		number = -1;
+		numberFinal = -1;
+	}
+
+	public int getNumberFinal() {
+		return numberFinal;
+	}
+
+	public void setNumberFinal(int numberFinal) {
+		this.numberFinal = numberFinal;
 	}
 
 	public int getNumber() {

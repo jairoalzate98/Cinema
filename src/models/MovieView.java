@@ -3,23 +3,27 @@ package models;
 public class MovieView extends Node{
 
 	private int idClient;
-	private int idMovie;
+	private int idRoom;
 	
-	public MovieView(int idClient, int idMovie) {
+	public MovieView(int idClient, int idRoom) {
 		this.idClient = idClient;
-		this.idMovie = idMovie;
+		this.idRoom = idRoom;
 	}
 
 	public int getIdClient() {
 		return idClient;
 	}
 
-	public int getIdMovie() {
-		return idMovie;
+	public int getIdRoom() {
+		return idRoom;
 	}
 
 	@Override
 	public String toString() {
-		return "MovieView [idClient=" + idClient + ", idMovie=" + idMovie + "]";
+		return "MovieView [idClient=" + idClient + ", idRoom=" + idRoom + "]";
+	}
+	
+	public Object[] toArray(){
+		return new Object[]{idClient, idRoom};
 	}
 }

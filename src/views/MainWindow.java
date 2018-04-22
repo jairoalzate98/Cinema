@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import controllers.Controller;
 import models.Client;
+import models.MovieView;
 import models.Room;
 
 public class MainWindow extends JFrame{
@@ -17,6 +18,7 @@ public class MainWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanelCinemaWelcome jPanelCinemaWelcome;
 	private JPanelInitSimulation jPanelInitSimulation;
+	private JPanelTable jPanelTable;
 
 	public MainWindow(Controller controller) {
 		setTitle(TITLE_TEXT);
@@ -53,6 +55,15 @@ public class MainWindow extends JFrame{
 	
 	public void addCliente(ArrayList<Client> client){
 		jPanelInitSimulation.setClient(client);
+		revalidate();
+		repaint();
+	}
+
+	public void generateReport(ArrayList<MovieView> movieViewList) {
+		remove(jPanelInitSimulation);
+		jPanelTable = new JPanelTable();
+		jPanelTable.setModel(movieViewList);
+		add(jPanelTable, BorderLayout.WEST);
 		revalidate();
 		repaint();
 	}

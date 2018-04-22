@@ -3,14 +3,13 @@ package models;
 public class Room extends Node {
 
 	private int idRoom;
-	private static int count;
 	private int capacity;
 	private Room nextRoom;
 	private int posX;
 	private int posY;
 	
-	public Room(int posX, int posY) {
-		this.idRoom = ++count;
+	public Room(int posX, int id, int posY) {
+		this.idRoom = id;
 		capacity = (int) (Math.random()*30);
 		this.posX = posX;
 		this.posY = posY;
@@ -41,7 +40,7 @@ public class Room extends Node {
 	}
 	
 	public void setCapacity(){
-		capacity--;
+		this.capacity--;
 	}
 
 	@Override

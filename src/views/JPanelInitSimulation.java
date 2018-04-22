@@ -34,7 +34,7 @@ public class JPanelInitSimulation extends JPanel {
 		rooms.clear();
 		int positionX = 0;
 		for (int i = 0; i < roomNumber; i++) {
-			Room r = new Room(positionX + ((getWidth() / roomNumber) / 2) - 100, getHeight() / 3);
+			Room r = new Room(positionX + ((getWidth() / roomNumber) / 2) - 100, i,getHeight() / 3);
 			rooms.add(r);
 			g.drawImage(new ImageIcon(getClass().getResource("/img/room.jpg")).getImage(), positionX, 10, (getWidth() / roomNumber), getHeight() / 3, this);
 			g.drawImage(new ImageIcon(getClass().getResource("/img/taquilla.jpg")).getImage(), r.getPosX(), r.getPosY(), 200, 100, this);

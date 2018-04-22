@@ -36,13 +36,17 @@ public class Cinema {
 				}else if(posX < client.getPosX()){
 					client.setPosX();
 				}else{ 
-					if (roomList.get(client.getNumber()).getCapacity() > 0) {
-						iter.remove();
-						roomList.get(client.getNumber()).setCapacity();
-					}else {
-						client.setNumber((int)(Math.random()*(roomList.size())));
-					}
+					iter.remove();
+					client.setNumberFinal(client.getNumber());
 				}
+			}
+		}
+	}
+	
+	public void getMovieViews(){
+		for (Client client : convertToArrayList()) {
+			if (client.getNumberFinal() != -1) {
+				addMovieView(new MovieView(client.getId(), roomList.get(client.getNumber()).getIdRoom()));
 			}
 		}
 	}
@@ -74,6 +78,7 @@ public class Cinema {
 	}
 
 	public void setRoomList(ArrayList<Room> roomList) {
+		roomList.clear();
 		this.roomList = roomList;
 	}
 
@@ -107,5 +112,15 @@ public class Cinema {
 		}else{
 			movieHead = movie;
 		}
+	}
+	
+	public boolean verifyCapacityInCinema(){
+		boolean t = false;
+		for (int i = 0; i < roomList.size(); i++) {
+			if(roomList.get(i).getCapacity() != 0){
+				t = true;
+			}
+		}
+		return t;
 	}
 }

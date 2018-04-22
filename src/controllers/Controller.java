@@ -16,11 +16,11 @@ public class Controller implements ActionListener{
 	private MainWindow mainWindow;
 	private Timer timer;
 	private int time;
-	
+
 	public Controller() {
 		cinema = new Cinema();
 		mainWindow = new MainWindow(this);
-		timer = new Timer(25, new ActionListener() {
+		timer = new Timer(5, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (time == 100) {
@@ -51,6 +51,7 @@ public class Controller implements ActionListener{
 
 	private void stopSimulation() {
 		timer.stop();
+		cinema.getMovieViews();
 	}
 
 	private void initSimulation() {
@@ -64,6 +65,6 @@ public class Controller implements ActionListener{
 	}
 
 	private void generateReport() {
-		// TODO Auto-generated method stub
+		mainWindow.generateReport(cinema.getMovieViewList());
 	}
 }
