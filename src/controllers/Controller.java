@@ -23,7 +23,7 @@ public class Controller implements ActionListener{
 		timer = new Timer(25, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (time == 200) {
+				if (time == 100) {
 					cinema.addClient(new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel()));
 					time = 0;
 				}
@@ -59,7 +59,7 @@ public class Controller implements ActionListener{
 		cinema.setRoomList(mainWindow.getRooms());
 		Client c = new Client(mainWindow.getWidhtPanel(), mainWindow.getHeightPanel());
 		cinema.addClient(c);
-		mainWindow.addCliente(cinema.getClientHead());
+		mainWindow.addCliente(cinema.convertToArrayList());
 		timer.start();
 	}
 

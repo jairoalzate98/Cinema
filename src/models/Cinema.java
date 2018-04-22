@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class Cinema {
  
 	private ArrayList<Room> roomList;
-	private ArrayList<Client> clientList;
+	private Client clientList;
 	private ArrayList<Client> clientListToSend;
 	private Movie movieHead;
 	private ArrayList<MovieView> movieViewList;
@@ -14,7 +14,6 @@ public class Cinema {
 	public Cinema() {
 		movieViewList = new ArrayList<>();
 		roomList = new ArrayList<>();
-		clientList = new ArrayList<>();
 	}
 	
 	public static MovieView creteMovieWiew(int idClient, int idMovie){
@@ -22,17 +21,7 @@ public class Cinema {
 	}
 	
 	public void verifyMove(){
-		/*
-		 * Iterator<String> iter = myArrayList.iterator();
-
-while (iter.hasNext()) {
-    String str = iter.next();
-
-    if (someCondition)
-        iter.remove();
-}
-		 * */
-		clientListToSend = new ArrayList<>(clientList);
+		clientListToSend = new ArrayList<>(convertToArrayList());
 		Iterator<Client> iter = clientListToSend.iterator();
 		while(iter.hasNext()){
 			Client client = iter.next();
@@ -51,6 +40,16 @@ while (iter.hasNext()) {
 				}
 			}
 		}
+	}
+	
+	public ArrayList<Client> convertToArrayList(){
+		ArrayList<Client> clients = new ArrayList<>();
+		Client actual = clientList;
+		while (actual != null) {
+			clients.add(actual);
+			actual = actual.getNextClient();
+		}
+		return clients;
 	}
 	
 	public ArrayList<Client> getClientListToSend() {
@@ -73,7 +72,7 @@ while (iter.hasNext()) {
 		this.roomList = roomList;
 	}
 
-	public ArrayList<Client> getClientHead() {
+	public Client getClientHead() {
 		return clientList;
 	}
 
@@ -82,7 +81,15 @@ while (iter.hasNext()) {
 	}
 
 	public void addClient(Client client){
-		clientList.add(client);
+		if (clientList != null) {
+			Client actual = clientList;
+			while(actual.getNextClient() != null){
+				actual = actual.getNextClient();
+			}
+			actual.setNextClient(client);
+		}else{
+			clientList = client;
+		}
 	}
 	
 	public void addMovie(Movie movie){

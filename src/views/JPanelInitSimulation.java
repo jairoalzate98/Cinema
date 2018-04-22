@@ -42,7 +42,7 @@ public class JPanelInitSimulation extends JPanel {
 		}
 		removeAll();
 		for (Client client2 : client) {
-			g.drawImage(new ImageIcon(getClass().getResource("/img/persona.jpg")).getImage(), client2.getPosX(), client2.getPosY(), 80, 80, this);
+			g.drawImage(new ImageIcon(getClass().getResource("/img/persona.png")).getImage(), client2.getPosX(), client2.getPosY(), 80, 80, this);
 		}
 	}
 }
