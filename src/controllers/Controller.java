@@ -2,12 +2,14 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import models.Cinema;
 import models.Client;
+import models.MovieView;
 import views.MainWindow;
 
 public class Controller implements ActionListener{
@@ -71,6 +73,10 @@ public class Controller implements ActionListener{
 	}
 
 	private void generateReport() {
-		mainWindow.generateReport(cinema.getMovieViewList());
+		ArrayList<MovieView> list = cinema.getMovieViewList();
+		for (MovieView movieView : list) {
+			cinema.addToTree(movieView);
+		}
+		mainWindow.generateReport(cinema.getMovieViewList(), cinema.getRoot());
 	}
 }

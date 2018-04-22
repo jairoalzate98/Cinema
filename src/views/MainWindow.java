@@ -19,6 +19,7 @@ public class MainWindow extends JFrame{
 	private JPanelCinemaWelcome jPanelCinemaWelcome;
 	private JPanelInitSimulation jPanelInitSimulation;
 	private JPanelTable jPanelTable;
+	private JPanelTree jPanelTree;
 
 	public MainWindow(Controller controller) {
 		setTitle(TITLE_TEXT);
@@ -59,11 +60,14 @@ public class MainWindow extends JFrame{
 		repaint();
 	}
 
-	public void generateReport(ArrayList<MovieView> movieViewList) {
+	public void generateReport(ArrayList<MovieView> movieViewList, MovieView root) {
 		remove(jPanelInitSimulation);
 		jPanelTable = new JPanelTable();
 		jPanelTable.setModel(movieViewList);
 		add(jPanelTable, BorderLayout.WEST);
+		jPanelTree = new JPanelTree();
+		jPanelTree.paintTree(root);
+		add(jPanelTree, BorderLayout.CENTER);
 		revalidate();
 		repaint();
 	}

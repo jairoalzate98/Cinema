@@ -24,7 +24,7 @@ public class JPanelTable extends JPanel {
 		model.setColumnIdentifiers(new Object[]{"idClient", "idRoom"});
 		table = new JTable(model);
 		JScrollPane js = new JScrollPane(table);
-		js.setPreferredSize(new Dimension(120, 700));
+		js.setPreferredSize(new Dimension(120, 680));
 		add(js, BorderLayout.CENTER);
 	}
 	

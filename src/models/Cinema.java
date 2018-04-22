@@ -3,18 +3,45 @@ package models;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Cinema extends Node{
+public class Cinema{
  
 	private ArrayList<Room> roomList;
 	private Client clientList;
 	private ArrayList<Client> clientListToSend;
 	private ArrayList<MovieView> movieViewList;
+	private MovieView root;
 	
 	public Cinema() {
 		movieViewList = new ArrayList<>();
 		roomList = new ArrayList<>();
 	}
 	
+	public void addToTree(MovieView newMovieView){
+		if (root == null) {
+			root = new MovieView(0);
+		}
+		if (newMovieView != null) {
+			if (!searchNode(newMovieView)) {
+				root.add(newMovieView);
+			}
+		}
+	}
+	
+	public boolean searchNode(MovieView movieView){
+		ArrayList<MovieView> mov = root.getMovieViews();
+		for (MovieView movieView2 : mov) {
+			if (movieView2.getIdRoom() == movieView.getIdRoom()) {
+				movieView2.add(movieView);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public MovieView getRoot() {
+		return root;
+	}
+
 	public static MovieView creteMovieWiew(int idClient, int idMovie){
 		return new MovieView(idClient, idMovie);
 	}
