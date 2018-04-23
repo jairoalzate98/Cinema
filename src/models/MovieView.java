@@ -11,7 +11,7 @@ public class MovieView{
 
 	public MovieView(int number){
 		movieViews = new ArrayList<>();
-		this.number = number;
+		this.idRoom = number;
 	}
 	
 	public int getNumber() {

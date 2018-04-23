@@ -73,6 +73,7 @@ public class Controller implements ActionListener{
 	}
 
 	private void generateReport() {
+		cinema.getMovieViews();
 		ArrayList<MovieView> list = cinema.getMovieViewList();
 		for (MovieView movieView : list) {
 			cinema.addToTree(movieView);

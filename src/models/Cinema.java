@@ -18,7 +18,7 @@ public class Cinema{
 	
 	public void addToTree(MovieView newMovieView){
 		if (root == null) {
-			root = new MovieView(0);
+			root = new MovieView(-1);
 		}
 		if (newMovieView != null) {
 			if (!searchNode(newMovieView)) {
